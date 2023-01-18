@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import renderList from './renderMethod.js';
 
 /* eslint-disable import/no-mutable-exports */

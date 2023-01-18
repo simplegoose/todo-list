@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import deleteImg from '../assets/vectors/delete-button.svg';
 import { data as globalData, getFromLocalStorage, saveToLocalStorage } from './updateMethods.js';
 
