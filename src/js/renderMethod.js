@@ -1,4 +1,5 @@
 import { listWrapper } from './elements.js';
+import { checkItemHandler, listItemHandler } from './handlers.js';
 
 export default function renderList(data) {
   let listItemHtml = '';
@@ -13,9 +14,18 @@ export default function renderList(data) {
           <div class="dot"></div>
           <div class="dot"></div>
         </div>
+        <input type="hidden" value=${item.id} id="index" />
       </li>
     `;
   });
 
   listWrapper.innerHTML = listItemHtml;
+
+  document.querySelectorAll('.list-item').forEach((item) => {
+    const check = item.querySelector('#list-check');
+    check.addEventListener('change', checkItemHandler);
+
+    const options = item.querySelector('.options');
+    options.addEventListener('click', listItemHandler);
+  });
 }

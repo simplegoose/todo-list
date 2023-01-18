@@ -52,14 +52,15 @@ h5 {
 
 .input-wrapper {
   border-bottom: 1px solid rgb(227, 226, 226);
-  position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .enter-icon {
-  position: absolute;
-  width: 30px;
+  width: 40px;
   top: 15%;
-  right: 1rem;
+  height: 100%;
+  padding: 0.3rem;
 }
 
 .todo-input {
@@ -96,6 +97,7 @@ h5 {
   padding: 1rem 0;
   display: flex;
   border-bottom: 1px solid rgb(227, 226, 226);
+  align-items: center;
 }
 
 .list-check {
@@ -107,6 +109,12 @@ h5 {
   margin-left: 0.5rem;
 }
 
+.list-item .todo-input {
+  padding: 0 0.5rem;
+  width: 80%;
+  background: inherit;
+}
+
 .options {
   display: flex;
   flex-direction: column;
@@ -114,6 +122,7 @@ h5 {
   align-items: center;
   width: 10%;
   flex: 1;
+  gap: 2px;
 }
 
 .options:hover {
@@ -129,4 +138,19 @@ h5 {
 
 .options:hover > .dot {
   background-color: grey;
+}
+
+.bg-yellow {
+  background-color: rgb(255, 247, 171);
+}
+
+.del-icon {
+  width: 28px;
+  top: 15%;
+  height: 100%;
+  padding: 0.3rem;
+}
+
+.strike-through {
+  text-decoration: line-through;
 }
