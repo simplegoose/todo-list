@@ -81,23 +81,3 @@ export function todoInputHandler(e) {
     });
   }
 }
-
-export function checkItemHandler(e) {
-  const id = this.parentNode.querySelector('#index').value;
-  const data = globalData.find((item) => item.id === Number(id));
-
-  if (e.target.checked) {
-    this.parentNode.classList.toggle('strike-through');
-    data.completed = true;
-  } else {
-    this.parentNode.classList.remove('strike-through');
-    data.completed = false;
-  }
-
-  saveToLocalStorage(globalData);
-}
-
-export function clearListHandler() {
-  saveToLocalStorage([]);
-  getFromLocalStorage([]);
-}

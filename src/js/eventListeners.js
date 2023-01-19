@@ -1,10 +1,9 @@
 import { clear, refreshWrapper, todoInput } from './elements.js';
 import {
-  checkItemHandler,
-  clearListHandler,
   listItemHandler,
   todoInputHandler,
 } from './handlers.js';
+import { checkItemHandler, clearListHandler } from './list-remove-handlers.js';
 import { getFromLocalStorage } from './updateMethods.js';
 
 export function listItemEventListener() {

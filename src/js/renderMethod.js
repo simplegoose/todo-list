@@ -1,6 +1,7 @@
 /* eslint-disable import/no-cycle */
 import { listWrapper } from './elements.js';
-import { checkItemHandler, listItemHandler } from './handlers.js';
+import { listItemHandler } from './handlers.js';
+import { checkItemHandler } from './list-remove-handlers.js';
 
 export default function renderList(data) {
   let listItemHtml = '';
