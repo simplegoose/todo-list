@@ -4,24 +4,41 @@ import {
   todoInputHandler,
 } from './handlers.js';
 import { checkItemHandler, clearListHandler } from './list-remove-handlers.js';
+import renderList from './renderMethod.js';
 import { getFromLocalStorage } from './updateMethods.js';
 
 export function listItemEventListener() {
   document.querySelectorAll('.list-item').forEach((item) => {
     const check = item.querySelector('#list-check');
-    check.addEventListener('change', checkItemHandler);
+    check.addEventListener('change', (e) => {
+      checkItemHandler(e);
+      renderList(getFromLocalStorage());
+    });
 
     const options = item.querySelector('.options');
-    options.addEventListener('click', listItemHandler);
+    options.addEventListener('click', () => {
+      listItemHandler();
+      renderList(getFromLocalStorage());
+    });
   });
 }
 
 export function addEventListeners() {
-  todoInput.addEventListener('keydown', todoInputHandler);
+  todoInput.addEventListener('keydown', (e) => {
+    todoInputHandler(e);
+    renderList(getFromLocalStorage());
+  });
 
-  refreshWrapper.addEventListener('click', getFromLocalStorage);
+  refreshWrapper.addEventListener('click', () => {
+    renderList(getFromLocalStorage());
+  });
 
-  clear.addEventListener('click', clearListHandler);
+  clear.addEventListener('click', () => {
+    clearListHandler();
+    renderList(getFromLocalStorage());
+  });
 
-  window.addEventListener('load', getFromLocalStorage);
+  window.addEventListener('load', () => {
+    renderList(getFromLocalStorage());
+  });
 }

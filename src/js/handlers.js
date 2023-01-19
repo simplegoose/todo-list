@@ -1,6 +1,5 @@
-/* eslint-disable import/no-cycle */
 import deleteImg from '../assets/vectors/delete-button.svg';
-import { data as globalData, getFromLocalStorage, saveToLocalStorage } from './updateMethods.js';
+import { getFromLocalStorage, saveToLocalStorage } from './updateMethods.js';
 
 export function listItemHandler() {
   const id = this.parentNode.querySelector('#index').value;
@@ -13,7 +12,7 @@ export function listItemHandler() {
   deleteBtn.src = deleteImg;
   deleteBtn.className = 'del-icon';
   deleteBtn.addEventListener('click', () => {
-    const filtered = globalData.filter((item) => !(item.id === Number(id)));
+    const filtered = getFromLocalStorage().filter((item) => !(item.id === Number(id)));
     filtered.forEach((item, index) => {
       item.id = index + 1;
     });
@@ -30,13 +29,13 @@ export function listItemHandler() {
   inputEl.value = description;
   inputEl.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
+      const globalData = getFromLocalStorage();
       const data = globalData.find((item) => item.id === Number(id));
 
       data.description = e.target.value;
 
       saveToLocalStorage(globalData);
 
-      getFromLocalStorage();
       const span = document.createElement('span');
       span.textContent = e.target.value;
       span.className = 'item-text';
@@ -59,6 +58,7 @@ export function listItemHandler() {
 export function todoInputHandler(e) {
   if (e.keyCode === 13) {
     const description = e.target.value;
+    const globalData = getFromLocalStorage();
     const arrLength = globalData.length;
 
     const data = {
@@ -70,8 +70,6 @@ export function todoInputHandler(e) {
     globalData.push(data);
 
     saveToLocalStorage(globalData);
-
-    getFromLocalStorage();
 
     e.target.value = '';
     e.target.blur();

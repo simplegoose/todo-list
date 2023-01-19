@@ -1,4 +1,3 @@
-/* eslint-disable import/no-cycle */
 import { listWrapper } from './elements.js';
 import { listItemHandler } from './handlers.js';
 import { checkItemHandler } from './list-remove-handlers.js';
