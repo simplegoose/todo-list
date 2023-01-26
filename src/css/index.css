@@ -148,7 +148,13 @@ h5 {
   width: 28px;
   top: 15%;
   height: 100%;
-  padding: 0.3rem;
+  background-image: url(http://localhost:8080/delete-button.svg);
+  background-repeat: no-repeat;
+  background-size: 70%;
+  border: none;
+  padding: 0.6rem;
+  background-position: center;
+  background-color: inherit;
 }
 
 .strike-through {

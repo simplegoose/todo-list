@@ -1,8 +1,9 @@
-import { listWrapper } from './elements.js';
 import { listItemHandler } from './handlers.js';
 import { checkItemHandler } from './list-remove-handlers.js';
 
 export default function renderList(data) {
+  const listWrapper = document.querySelector('.todo-list');
+
   let listItemHtml = '';
   data.forEach((item) => {
     listItemHtml

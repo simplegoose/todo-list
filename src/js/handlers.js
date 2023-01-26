@@ -1,5 +1,12 @@
-import deleteImg from '../assets/vectors/delete-button.svg';
 import { getFromLocalStorage, saveToLocalStorage } from './updateMethods.js';
+
+export const removeItem = (id) => {
+  const filtered = getFromLocalStorage().filter((item) => !(item.id === Number(id)));
+  filtered.forEach((item, index) => {
+    item.id = index + 1;
+  });
+  saveToLocalStorage(filtered);
+};
 
 export function listItemHandler() {
   const id = this.parentNode.querySelector('#index').value;
@@ -8,15 +15,11 @@ export function listItemHandler() {
   options.removeEventListener('click', listItemHandler);
 
   const description = descriptionEl.textContent;
-  const deleteBtn = document.createElement('img');
-  deleteBtn.src = deleteImg;
+  const deleteBtn = document.createElement('button');
+  deleteBtn.setAttribute('type', 'button');
   deleteBtn.className = 'del-icon';
   deleteBtn.addEventListener('click', () => {
-    const filtered = getFromLocalStorage().filter((item) => !(item.id === Number(id)));
-    filtered.forEach((item, index) => {
-      item.id = index + 1;
-    });
-    saveToLocalStorage(filtered);
+    removeItem(id);
     this.parentNode.remove();
   });
 
