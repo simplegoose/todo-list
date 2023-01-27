@@ -8,6 +8,15 @@ export const removeItem = (id) => {
   saveToLocalStorage(filtered);
 };
 
+export const editItem = (id, description) => {
+  const globalData = getFromLocalStorage();
+  const data = globalData.find((item) => item.id === Number(id));
+
+  data.description = description;
+
+  saveToLocalStorage(globalData);
+};
+
 export function listItemHandler() {
   const id = this.parentNode.querySelector('#index').value;
   const descriptionEl = this.parentNode.querySelector('.item-text');
@@ -32,12 +41,7 @@ export function listItemHandler() {
   inputEl.value = description;
   inputEl.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
-      const globalData = getFromLocalStorage();
-      const data = globalData.find((item) => item.id === Number(id));
-
-      data.description = e.target.value;
-
-      saveToLocalStorage(globalData);
+      editItem(id, e.target.value);
 
       const span = document.createElement('span');
       span.textContent = e.target.value;

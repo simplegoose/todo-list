@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">35.29% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/15</span>
+                <span class='fraction'>6/17</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">33.33% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/5</span>
+                <span class='fraction'>2/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">33.33% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/13</span>
+                <span class='fraction'>5/15</span>
             </div>
         
             
@@ -87,11 +87,23 @@
 <a name='L22'></a><a href='#L22'>22</a>
 <a name='L23'></a><a href='#L23'>23</a>
 <a name='L24'></a><a href='#L24'>24</a>
-<a name='L25'></a><a href='#L25'>25</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -101,8 +113,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -113,20 +123,25 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { getFromLocalStorage, saveToLocalStorage } from './updateMethods.js';
 &nbsp;
+export const updateCompleted = (id, isCompleted) =&gt; {
+  const globalData = getFromLocalStorage();
+  const data = globalData.find((item) =&gt; item.id === Number(id));
+&nbsp;
+  data.completed = isCompleted;
+&nbsp;
+  saveToLocalStorage(globalData);
+};
+&nbsp;
 export function <span class="fstat-no" title="function not covered" >checkItemHandler(</span>e) {
   const id = <span class="cstat-no" title="statement not covered" >this.parentNode.querySelector('#index').value;</span>
-  const globalData = <span class="cstat-no" title="statement not covered" >getFromLocalStorage();</span>
-  const data = <span class="cstat-no" title="statement not covered" >globalData.find(<span class="fstat-no" title="function not covered" >(i</span>tem) =&gt; <span class="cstat-no" title="statement not covered" >item.id === Number(id))</span>;</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  if (e.target.checked) {</span>
 <span class="cstat-no" title="statement not covered" >    this.parentNode.classList.toggle('strike-through');</span>
-<span class="cstat-no" title="statement not covered" >    data.completed = true;</span>
+<span class="cstat-no" title="statement not covered" >    updateCompleted(id, true);</span>
   } else {
 <span class="cstat-no" title="statement not covered" >    this.parentNode.classList.remove('strike-through');</span>
-<span class="cstat-no" title="statement not covered" >    data.completed = false;</span>
+<span class="cstat-no" title="statement not covered" >    updateCompleted(id, false);</span>
   }
-&nbsp;
-<span class="cstat-no" title="statement not covered" >  saveToLocalStorage(globalData);</span>
 }
 &nbsp;
 export function <span class="fstat-no" title="function not covered" >clearListHandler(</span>) {
@@ -142,7 +157,7 @@ export function <span class="fstat-no" title="function not covered" >clearListHa
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-01-26T17:30:47.390Z
+                at 2023-01-27T19:47:09.705Z
             </div>
         <script src="prettify.js"></script>
         <script>
