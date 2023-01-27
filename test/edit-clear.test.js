@@ -1,5 +1,5 @@
 import { editItem } from '../src/js/handlers.js';
-import { updateCompleted } from '../src/js/list-remove-handlers.js';
+import { clearListHandler, updateCompleted } from '../src/js/list-remove-handlers.js';
 import { getFromLocalStorage, saveToLocalStorage } from '../src/js/updateMethods.js';
 
 /** * @jest-environment jsdom */
@@ -45,10 +45,13 @@ describe('Edit and clear functions', () => {
       description: 'Add to do',
       id: 1,
     };
+
     todos.push(todo);
     saveToLocalStorage(todos);
+
     updateCompleted(1, true);
     clearListHandler();
+
     expect(getFromLocalStorage()).toHaveLength(0);
   });
 });
